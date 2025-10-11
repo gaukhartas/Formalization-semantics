@@ -21,8 +21,10 @@ let alph =           ['a'-'z''A'-'Z']
 (* TODO: redefine *)
 let num  = ['0'-'9']
 (* TODO: redefine *)
+let digit = ['0'-'9']
 let zerointeger = '0'(('_')?'0')*
-let decinteger = ['1'-'9']
+let following = (('_')?digit)*
+let decinteger = ['1'-'9']following
 let decimal = zerointeger | decinteger
 let comment = '(' '*' [^'*']* ('*' (('*'*)|([^'*'')'][^'*']*)))* '*' ')'
 (* To keep things simple, strings here only contain chars, nums and blanks 
