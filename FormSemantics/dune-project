@@ -1,6 +1,6 @@
 (lang dune 3.20)
 
-(name FormSemantics)
+(name LangForm)
 
 (generate_opam_files true)
 
@@ -15,11 +15,16 @@
 
 (documentation https://url/to/documentation)
 
+(using menhir 3.0)
+
 (package
- (name FormSemantics)
+ (name LangForm)
  (synopsis "A short synopsis")
  (description "A longer description")
- (depends ocaml)
+(depends 
+  ocaml
+  dune
+  ppx_deriving)
  (tags
   ("add topics" "to describe" your project)))
 
