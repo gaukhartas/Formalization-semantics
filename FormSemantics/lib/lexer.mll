@@ -21,7 +21,9 @@ let alph =           ['a'-'z''A'-'Z']
 (* TODO: redefine *)
 let num  = ['0'-'9']
 (* TODO: redefine *)
-let decimal = ['0'-'9']['0'-'9']?
+let zerointeger = '0'(('_')?'0')*
+let decinteger = ['1'-'9']
+let decimal = zerointeger | decinteger
 let comment = '(' '*' [^'*']* ('*' (('*'*)|([^'*'')'][^'*']*)))* '*' ')'
 (* To keep things simple, strings here only contain chars, nums and blanks 
   Could be refined *)
