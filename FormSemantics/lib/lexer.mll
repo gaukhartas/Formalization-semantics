@@ -17,13 +17,20 @@
 
 }
 
-let alph =           ['a'-'z''A'-'Z']
+let alph = ['a'-'z''A'-'Z']
 (* TODO: redefine *)
 let num  = ['0'-'9']
 (* TODO: redefine *)
+let digit = ['0'-'9']
 let zerointeger = '0'(('_')?'0')*
-let decinteger = ['1'-'9']
+let following = (('_')?digit)*
+let decinteger = ['1'-'9']following
 let decimal = zerointeger | decinteger
+
+(* let ident = ['a'-'z''A'-'Z']+ *)
+let ident = (alph|'_')(['a'-'z']|num|'_')*
+
+
 let comment = '(' '*' [^'*']* ('*' (('*'*)|([^'*'')'][^'*']*)))* '*' ')'
 (* To keep things simple, strings here only contain chars, nums and blanks 
   Could be refined *)
@@ -64,7 +71,7 @@ rule token = parse
 | "int"        {TP(IntT)}
 
 
-| "foo" as i  {IDENTIFIER i}
+| ident as i  {IDENTIFIER i}
 
 
 | _  {Printf.printf "ERROR: unrecogized symbol '%s'\n" (Lexing.lexeme lexbuf);
