@@ -28,7 +28,9 @@ let decinteger = ['1'-'9']following
 let decimal = zerointeger | decinteger
 
 (* let ident = ['a'-'z''A'-'Z']+ *)
-let ident = (alph|'_')(['a'-'z']|num|'_')*
+let ident = (alph|'_') (alph|num|'_')*
+
+let floating_point = (['1'-'9'] digit* '.' digit*) | ('.' digit+)
 
 
 let comment = '(' '*' [^'*']* ('*' (('*'*)|([^'*'')'][^'*']*)))* '*' ')'
